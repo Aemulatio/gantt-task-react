@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Calendar } from "./calendar";
@@ -7,24 +7,24 @@ import { ViewMode } from "../../types/public-types";
 
 
 export default {
-  title: "Lib/Calendar",
   component: Calendar,
+  render: (args) => <Calendar {...args} />,
 } as Meta<typeof Calendar>;
 
+type S = StoryObj<typeof Calendar>;
 
-const Template: Story<typeof Calendar> = (args) => <Calendar {...args} />;
-
-export const Test = Template.bind({});
-Test.args = {
-  viewMode: ViewMode.Day,
-  locale: "ru",
-  rtl: false,
-  columnWidth: 300,
-  fontSize: "14px",
-  fontFamily: "Roboto",
-  headerHeight: 150,
-  dateSetup: {
+export const CalendarStory: S = {
+  args: {
     viewMode: ViewMode.Day,
-    dates: [],
+    locale: "ru",
+    rtl: false,
+    columnWidth: 300,
+    fontSize: "14px",
+    fontFamily: "Roboto",
+    headerHeight: 150,
+    dateSetup: {
+      viewMode: ViewMode.Day,
+      dates: [],
+    },
   },
 };
